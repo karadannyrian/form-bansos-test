@@ -34,11 +34,12 @@ export default function FormDetail(props) {
         } else setVillage([])
     }
 
-    useEffect(() => {
+    useEffect((props) => {
+        console.log(props)
         if (count === 0) {
             getDataProvince()
+            setCount(1)
         }
-        setCount(1)
     });
     return (
         <div className="lg:flex lg:items-center lg:justify-between p-5">

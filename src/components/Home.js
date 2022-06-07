@@ -26,8 +26,11 @@ export default function Home(props) {
     const [count, setCount] = useState(0)
     const [payload, setPayload] = useState({ ...defaultPayload, id: uuidv4(), kk: '', nik: '', });
     useEffect(() => {
-        if (count === 0) setPayload({ ...defaultPayload, id: uuidv4(), kk: '', nik: '', })
-        setCount(1)
+        if (count === 0) {
+            setPayload({ ...defaultPayload, id: uuidv4(), kk: '', nik: '', })
+            setCount(1)
+        }
+
     });
     return (
         <div className='h-full'>

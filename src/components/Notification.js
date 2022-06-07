@@ -3,9 +3,8 @@ import { Dialog, Transition } from '@headlessui/react'
 
 export default function Notification(props) {
     const [open, setOpen] = useState(true)
-
     const cancelButtonRef = useRef(null)
-
+    console.log(open)
     return (
         <Transition.Root show={props.visible} as={Fragment}>
             <Dialog as="div" className="relative z-10" initialFocus={cancelButtonRef} onClose={setOpen}>

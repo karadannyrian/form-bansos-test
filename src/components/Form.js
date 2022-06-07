@@ -2,9 +2,10 @@ import React from "react"
 
 export default function Form(props) {
     const { payload } = props
-
-
-    console.log(payload)
+    const genderList = [
+        { id: 1, name: 'Laki-laki ' },
+        { id: 2, name: 'Perempuan' },
+    ]
     return (
         <div className="lg:flex lg:items-center lg:justify-between p-5">
             <div className="mt-10 sm:mt-0 m-15">
@@ -23,6 +24,55 @@ export default function Form(props) {
                     <div className="shadow overflow-hidden sm:rounded-md">
                         <div className="px-10 py-5 bg-white sm:p-6">
                             <div className="grid grid-cols-6 gap-6">
+                                <div className="col-span-6">
+                                    <label className="block text-sm font-medium text-gray-700">
+                                        Nama
+                                    </label>
+                                    <input
+                                        required
+                                        type="text"
+                                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                        value={payload.name}
+                                        onChange={(e) => {
+                                            props.setValue({ ...payload, name: e.target.value.toUpperCase() })
+                                        }}
+                                    />
+                                </div>
+                                <div className="col-span-6 sm:col-span-3">
+                                    <label className="block text-sm font-medium text-gray-700">
+                                        Umur
+                                    </label>
+                                    <input
+                                        required
+                                        type="number"
+                                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                        value={payload.age}
+                                        onChange={(e) => {
+                                            props.setValue({ ...payload, age: e.target.value })
+                                        }}
+                                    />
+                                </div>
+
+                                <div className="col-span-6 sm:col-span-3">
+                                    <label className="block text-sm font-medium text-gray-700">
+                                        Jenus Kelamin
+                                    </label>
+                                    <select
+                                        required
+                                        value={payload.gender}
+                                        onChange={(e) => {
+                                            props.setValue({ ...payload, gender: e.target.value })
+                                        }}
+                                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                    >
+                                        <option disabled value={''}>Pilih jenis kelamin</option>
+                                        {genderList && genderList.map(v => {
+                                            return (
+                                                <option key={v.name} value={v.name} >{v.name}</option>
+                                            )
+                                        })}
+                                    </select>
+                                </div>
                                 <div className="col-span-6 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">
                                         Nomor Kartu Keluarga
@@ -55,20 +105,7 @@ export default function Form(props) {
                                     />
                                 </div>
 
-                                <div className="col-span-6">
-                                    <label className="block text-sm font-medium text-gray-700">
-                                        Nama
-                                    </label>
-                                    <input
-                                        required
-                                        type="text"
-                                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                        value={payload.name}
-                                        onChange={(e) => {
-                                            props.setValue({ ...payload, name: e.target.value.toUpperCase() })
-                                        }}
-                                    />
-                                </div>
+
                                 <div className="col-span-6 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">
                                         Penghasilan sebelum pandemi
@@ -128,15 +165,27 @@ export default function Form(props) {
                                     <label className="block text-sm font-medium text-gray-700">
                                         Foto KTP
                                     </label>
-                                    <input accept=".jpg,.png,.pdf" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 " aria-describedby="file_input_help" id="file_input" type="file" />
-                                    <p class="mt-1 text-sm text-gray-500" id="file_input_help">JPG, PNG, PDF (MAX 1MB)</p>
+                                    <input onChange={(e) => {
+                                        let file = e.target.files[0]
+                                        if (file.size > 2000000) {
+                                            alert('Max file 2MB')
+                                            e.target.value = null
+                                        }
+                                    }} accept=".jpg,.jpeg,.bmp,.png,.pdf" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 " aria-describedby="file_input_help" id="file_input" type="file" />
+                                    <p class="mt-1 text-sm text-gray-500" id="file_input_help">JPG/JPEG/PNG/BMP (MAX 2MB)</p>
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">
                                         Foto KK
                                     </label>
-                                    <input accept=".jpg,.png,.pdf" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300" type="file" id="formFile" />
-                                    <p class="mt-1 text-sm text-gray-500" id="file_input_help">JPG, PNG, PDF (MAX 1MB)</p>
+                                    <input onChange={(e) => {
+                                        let file = e.target.files[0]
+                                        if (file.size > 2000000) {
+                                            alert('Max file 2MB')
+                                            e.target.value = null
+                                        }
+                                    }} accept=".jpg,.jpeg,.bmp,.png,.pdf" required class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 " aria-describedby="file_input_help" id="file_input" type="file" />
+                                    <p class="mt-1 text-sm text-gray-500" id="file_input_help">JPG/JPEG/PNG/BMP (MAX 2MB)</p>
                                 </div>
                             </div>
                         </div>

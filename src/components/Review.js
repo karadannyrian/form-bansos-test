@@ -40,6 +40,14 @@ export default function Review(props) {
                             <div className="grid grid-cols-6 gap-6">
                                 <div className="col-span-6 sm:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">
+                                        Nama
+                                    </label>
+                                    <label className="block text-sm font-medium text-gray-500">
+                                        {payload.name || 'Belum diisi'}
+                                    </label>
+                                </div>
+                                <div className="col-span-6 sm:col-span-2">
+                                    <label className="block text-sm font-medium text-gray-700">
                                         Nomor Kartu Keluarga
                                     </label>
                                     <label className="block text-sm font-medium text-gray-500">
@@ -58,13 +66,23 @@ export default function Review(props) {
 
                                 <div className="col-span-6 sm:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">
-                                        Nama
+                                        Umur
                                     </label>
                                     <label className="block text-sm font-medium text-gray-500">
-                                        {payload.nama || 'Belum diisi'}
+                                        {payload.age || 'Belum diisi'}
                                     </label>
                                 </div>
-                                <div className="col-span-6 sm:col-span-3">
+
+                                <div className="col-span-6 sm:col-span-2">
+                                    <label className="block text-sm font-medium text-gray-700">
+                                        Jenis Kelamin
+                                    </label>
+                                    <label className="block text-sm font-medium text-gray-500">
+                                        {payload.gender || 'Belum diisi'}
+                                    </label>
+                                </div>
+                                <br></br>
+                                <div className="col-span-6 sm:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">
                                         Penghasilan sebelum pandemi
                                     </label>
@@ -72,7 +90,7 @@ export default function Review(props) {
                                         {payload.salaryBefore ? `Rp.${payload.salaryBefore}` : 'Belum diisi'}
                                     </label>
                                 </div>
-                                <div className="col-span-6 sm:col-span-3">
+                                <div className="col-span-6 sm:col-span-2">
                                     <label className="block text-sm font-medium text-gray-700">
                                         Penghasilan setelah pandemi
                                     </label>

@@ -15,6 +15,8 @@ const defaultPayload = {
     kelurahan: '',
     rt: '',
     rw: '',
+    age: '',
+    gender: '',
     address: null,
     salaryBefore: '',
     salaryAfter: '',
@@ -56,14 +58,14 @@ export default function Home(props) {
 
                 </div>
             </div>
-            <StepWizard>
+            <StepWizard className='overflow-hidden'>
                 <FormGeneral payload={payload} setValue={(res) => setPayload(res)} />
                 <FormDetail payload={payload} setValue={(res) => setPayload(res)} />
                 <Review payload={payload} setValue={(res) => setPayload(res)} />
             </StepWizard>
-            <div className='hidden sm:block absolute bottom-0 center-0 w-full'>
-                <footer className="text-center lg:text-left bg-indigo-100 text-gray-600">
-                    <div className="text-center p-6 bg-indigo-100">
+            <div className='hidden lg:block absolute bottom-0 center-0 overflow-hidden'>
+                <footer className="text-center lg:text-left bg-indigo-100 text-gray-600 w-screen">
+                    <div className="text-center bg-indigo-100">
                         <div className='pb-1'>
                             <span>© 2022</span>
                             <a className="text-gray-600 font-semibold" href="https://github.com/karadannyrian"> karadannyrian</a>

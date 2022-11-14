@@ -72,6 +72,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 Successfully deployed to the following URLs:
 
 form-bansos-test – ./
+
 form-bansos-test-git-main-karadannyrian.vercel.app
 form-bansos-test.vercel.app
 form-bansos-test-karadannyrian.vercel.app
